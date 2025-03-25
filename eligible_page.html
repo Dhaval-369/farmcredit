@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Check your eligibility for farmer loans and government schemes with our secure and user-friendly tool.">
+    <meta name="keywords" content="farmer loan, government scheme, eligibility, agriculture, subsidy">
+    <meta name="author" content="FarmCredit">
+    <!-- Security Meta Tags -->
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <title>Farmer Loan & Scheme Eligibility</title>
+    <link rel="stylesheet" href="eligible_page.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header class="header">
+        <div class="logo">
+            <h1>FarmCredit</h1>
+        </div>
+        <nav class="navbar">
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="farmer_calculater.html">Features</a></li>
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="countact_us.html">Contact</a></li>
+                <li><a href="login_page.html" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Container -->
+    <div class="container">
+        <h2>Check Your Eligibility</h2>
+        <form id="eligibilityForm">
+            <!-- Land Size -->
+            <div class="form-group">
+                <label for="land-size">Total Land Owned (in Acres)</label>
+                <input type="number" id="land-size" name="land-size" required>
+            </div>
+
+            <!-- Land Ownership Certificate -->
+            <div class="form-group">
+                <label for="certificate">Land Ownership Certificate</label>
+                <select id="certificate" name="certificate" required>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            </div>
+
+            <!-- Annual Income -->
+            <div class="form-group">
+                <label for="income">Annual Income (INR)</label>
+                <input type="number" id="income" name="income" required>
+            </div>
+
+            <!-- Primary Crop Type -->
+            <div class="form-group">
+                <label for="crop">Primary Crop Type</label>
+                <select id="crop" name="crop" required>
+                    <option value="wheat">Wheat</option>
+                    <option value="rice">Rice</option>
+                    <option value="maize">Maize</option>
+                    <option value="vegetables">Vegetables</option>
+                    <option value="others">Others</option>
+                </select>
+            </div>
+
+            <!-- Government Scheme -->
+            <div class="form-group">
+                <label for="scheme">Select Government Scheme</label>
+                <select id="scheme" name="scheme" required>
+                    <option value="pm-kisan">PM Kisan Samman Nidhi</option>
+                    <option value="pmfby">Pradhan Mantri Fasal Bima Yojana</option>
+                    <option value="agriculture-loan">Agriculture Loan Subsidy</option>
+                    <option value="solar-pump">Solar Pump Subsidy</option>
+                </select>
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="btn">Check Eligibility</button>
+        </form>
+
+        <!-- Result Display -->
+        <div class="result" id="result"></div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        
+    </footer>
+
+    <!-- JavaScript for Dynamic Updates -->
+    <script>
+        document.getElementById('eligibilityForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            // Get user inputs
+            const landSize = parseFloat(document.getElementById('land-size').value) || 0;
+            const certificate = document.getElementById('certificate').value;
+            const income = parseFloat(document.getElementById('income').value) || 0;
+            const crop = document.getElementById('crop').value;
+            const scheme = document.getElementById('scheme').value;
+
+            let resultMessage = '';
+
+            // Eligibility logic
+            if (landSize >= 2 && certificate === 'yes' && income >= 50000) {
+                resultMessage = `🎉 Congratulations! You are eligible for the <strong>${scheme}</strong> scheme.`;
+            } else {
+                resultMessage = `❌ Sorry, you are not eligible for the <strong>${scheme}</strong> scheme.`;
+            }
+
+            // Display result
+            document.getElementById('result').innerHTML = resultMessage;
+        });
+    </script>
+</body>
+</html>

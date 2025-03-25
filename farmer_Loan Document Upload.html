@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Loan Document Upload</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="farmer_Loan Document Upload.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">FarmCredit</div>  
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="farmer_calculater.html">Features</a></li>
+                <li><a href="about_us.html">About</a></li>
+                <li><a href="countact_us.html">Contact</a></li>
+                <li><a href="login_page.html" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2>Farmer Loan Document Upload</h2>
+        <form id="uploadForm" action="upload.php" method="POST" enctype="multipart/form-data">
+            <!-- Identity Proof -->
+            <div class="form-group">
+                <label>👤 Identity Proof (Aadhaar, PAN, Voter ID)</label>
+                <input type="file" name="identity_proof" accept=".pdf,.jpg,.png" required>
+            </div>
+
+            <!-- Address Proof -->
+            <div class="form-group">
+                <label>🏡 Address Proof (Electricity Bill, Ration Card)</label>
+                <input type="file" name="address_proof" accept=".pdf,.jpg,.png" required>
+            </div>
+
+            <!-- Land Ownership Proof -->
+            <div class="form-group">
+                <label>🌾 Land Ownership Proof (Khasra-Khatauni, Lease Agreement)</label>
+                <input type="file" name="land_proof" accept=".pdf,.jpg,.png" required>
+            </div>
+
+            <!-- Income Proof -->
+            <div class="form-group">
+                <label>📑 Income Proof (Bank Statement, Farming Receipts)</label>
+                <input type="file" name="income_proof" accept=".pdf,.jpg,.png" required>
+            </div>
+
+            <!-- Loan History / CIBIL Report -->
+            <div class="form-group">
+                <label>📊 Loan History / CIBIL Report</label>
+                <input type="file" name="cibil_report" accept=".pdf,.jpg,.png">
+            </div>
+
+            <!-- Submit Button -->
+            <button type="submit" class="animate-bounce">Submit Documents</button>
+        </form>
+
+        <!-- Success Message -->
+        <div id="successMessage" class="success-message">
+            <p>🎉 Your documents have been successfully submitted!</p>
+        </div>
+    </div>
+
+    <!-- Footer -->
+   
+
+    <!-- JavaScript -->
+    <script>
+        document.getElementById('uploadForm').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevent the form from submitting normally
+
+            // Simulate form submission (replace with actual submission logic)
+            setTimeout(() => {
+                // Show success message
+                document.getElementById('successMessage').style.display = 'block';
+
+                // Reset the form after 3 seconds
+                setTimeout(() => {
+                    document.getElementById('uploadForm').reset();
+                    document.getElementById('successMessage').style.display = 'none';
+                }, 3000); // Reset after 3 seconds
+            }, 1000); // Simulate a 1-second delay for submission
+        });
+    </script>
+</body>
+</html>

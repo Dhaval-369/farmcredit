@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farmer Credit Score Calculator</title>
+    <link rel="stylesheet" href="farmer_calculater.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="logo">FarmCredit</div>
+        <nav>
+            <ul>
+                <li><a href="homepage.html">Home</a></li>
+                <li><a href="features.html">Features</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+                <li><a href="login.html" class="btn-login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Container -->
+    <div class="container">
+        <h2>Farmer Credit Score Calculator</h2>
+        
+        <label for="landQuality">Land Quality (0-10)</label>
+        <input type="number" id="landQuality" min="0" max="10" placeholder="Enter land quality score">
+        
+        <label for="weatherRisk">Weather Risk (0-10)</label>
+        <input type="number" id="weatherRisk" min="0" max="10" placeholder="Enter weather risk score">
+        
+        <label for="soilHealth">Soil Health (0-10)</label>
+        <input type="number" id="soilHealth" min="0" max="10" placeholder="Enter soil health score">
+        
+        <label for="cropYield">Crop Yield (0-10)</label>
+        <input type="number" id="cropYield" min="0" max="10" placeholder="Enter crop yield score">
+        
+        <label for="marketTrends">Market Trends (0-10)</label>
+        <input type="number" id="marketTrends" min="0" max="10" placeholder="Enter market trends score">
+        
+        <label for="traditionalScore">Traditional Credit Score (300-850)</label>
+        <input type="number" id="traditionalScore" min="300" max="850" placeholder="Enter traditional credit score">
+        
+        <button onclick="calculateScore()">Calculate Credit Score</button>
+        
+        <div class="result" id="creditScore">Your Score: --</div>
+    </div>
+
+    <!-- Footer -->
+    
+
+    <!-- JavaScript -->
+    <script>
+        function calculateScore() {
+            // Weights for farmer-specific factors
+            let W1 = 0.2, W2 = 0.2, W3 = 0.2, W4 = 0.2, W5 = 0.2; // Equal weights for farmer score
+            let land = parseFloat(document.getElementById("landQuality").value) || 0;
+            let weather = parseFloat(document.getElementById("weatherRisk").value) || 0;
+            let soil = parseFloat(document.getElementById("soilHealth").value) || 0;
+            let crop = parseFloat(document.getElementById("cropYield").value) || 0;
+            let market = parseFloat(document.getElementById("marketTrends").value) || 0;
+            let traditionalScore = parseFloat(document.getElementById("traditionalScore").value) || 720; // Default to 720 if not provided
+            
+            // Calculate farmer score (scaled to 300-850 range)
+            let farmerScore = (W1 * land) + (W2 * weather) + (W3 * soil) + (W4 * crop) + (W5 * market);
+            let scaledFarmerScore = 300 + (farmerScore * 55); // Scale to 300-850 range
+            
+            // Combine traditional and farmer scores with weights
+            let W_traditional = 0.6, W_farmer = 0.4;
+            let finalScore = (W_traditional * traditionalScore) + (W_farmer * scaledFarmerScore);
+            finalScore = Math.round(finalScore); // Round to the nearest whole number
+            
+            // Display the result
+            document.getElementById("creditScore").innerText = "Final Score: " + finalScore + " / 850";
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="Login to FarmCredit to access tailored credit options and government schemes.">
+    <meta name="keywords" content="farmer loan, government scheme, credit score, agriculture, subsidy, technical help">
+    <meta name="author" content="FarmCredit">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://cdnjs.cloudflare.com;">
+    <meta http-equiv="Strict-Transport-Security" content="max-age=31536000; includeSubDomains">
+    <title>Login - FarmCredit</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="login_page.css"> <!-- Link to external CSS file -->
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo">FarmCredit</div>
+        <ul>
+            <li><a href="homepage.html">Home</a></li>
+            <li><a href="features.html">Features</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="login.html" class="btn-login">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Login Section -->
+    <section id="login" class="container">
+        <h2 class="animate-heading">Login</h2>
+        <form id="loginForm" class="animate-form">
+            <div class="form-group">
+                <label for="login-email">Email Address</label>
+                <input type="email" id="login-email" name="login-email" required>
+            </div>
+            <div class="form-group">
+                <label for="login-password">Password</label>
+                <input type="password" id="login-password" name="login-password" required>
+            </div>
+            <button type="submit" class="btn"><a href="homepage.html"> Login </a></button>
+        </form>
+        
+        <!-- Success Message (Hidden by Default) -->
+        <div id="success-message" class="hidden">
+        
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      
+    </footer>
+
+    <script src="login.js"></script> <!-- External JavaScript file -->
+</body>
+</html>
